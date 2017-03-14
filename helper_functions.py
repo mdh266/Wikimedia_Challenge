@@ -4,7 +4,6 @@ They were included here instead of the jupyter notebook
 to keep the noteboo shorter.
 """
 
-import pandas as pd
 import numpy as np
 import pandas as pd
 

@@ -1,0 +1,7 @@
+# Requirements for this blog post
+# To use type: pip install -r requirements.txt
+
+jupyter
+pandas
+matplotlib
+numpy
