@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+
+<header>
+    <div class="nav">
+      <ul>
+        <li class="home"><a href="http://michael-harmon.com">Home</a></li>
+        <li class="LinkedIn"><a href="https://linkedin.com/in/michaeldavidharmon">LinkedIn</a></li>
+        <li class="GitHub"><a href="https://github.com/mdh266/">GitHub</a></li>
+      </ul>
+    </div>
+  </header>
+
 <head><meta charset="utf-8" />
 <title>Wikimedia_Challnenge</title>
 
@@ -11751,32 +11762,39 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wikimedia-Data-Challenge">Wikimedia Data Challenge<a class="anchor-link" href="#Wikimedia-Data-Challenge">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>This Project was put out as data challenge by the <a href="https://wikimediafoundation.org/wiki/Home">Wikimedia Foundation</a> for a data analyst position. I thought it would be a great opportunity to brush up on some data analysis tools in Pandas and decided to complete the challenge.</p>
+<h1 id="Wikimedia-Data-Challenge">Wikimedia Data Challenge<a class="anchor-link" href="#Wikimedia-Data-Challenge">&#182;</a></h1><hr>
+<h2 id="Contents:">Contents:<a class="anchor-link" href="#Contents:">&#182;</a></h2><ul>
+<li><p><a href="#Introduction">Introduction</a></p>
+</li>
+<li><p><a href="#Analysis">Data Analysis</a></p>
+</li>
+<li><p><a href="#Conclusion">Conclusion</a></p>
+</li>
+</ul>
+<p>The source code can be found <a href="https://github.com/mdh266/Wikimedia_Challenge">here</a>.</p>
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><hr>
+<p>This Project was put out as data challenge by the <a href="https://wikimediafoundation.org/wiki/Home">Wikimedia Foundation</a> for a data analyst position. I thought it would be a great opportunity to brush up on some data analysis tools in Pandas and decided to complete the challenge.</p>
 <p>The goal of the project was to analyze data from <em>event logging</em> (EL) to track a variety of performance and usage metrics to help the company make decisions. Specifically, they were interested in:</p>
 <ul>
-<li><em>clickthrough rate</em>: the proportion of search sessions where the user clicked on one of the results displayed</li>
-<li><em>zero results rate</em>: the proportion of searches that yielded 0 results</li>
+<li><p><em>clickthrough rate</em>: the proportion of search sessions where the user clicked on one of the results displayed</p>
+</li>
+<li><p><em>zero results rate</em>: the proportion of searches that yielded 0 results</p>
+</li>
 </ul>
 <p>EL uses JavaScript to asynchronously send messages (events) to their servers when the user has performed specific actions.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h2><p>The dataset comes from a <a href="3">tracking schema</a> that the Wikimedia Foundation uses for assessing user satisfaction. Desktop users are randomly sampled to be anonymously tracked by this schema which uses a "I'm alive" pinging system that we can use to estimate how long our users stay on the pages they visit. The dataset contains just a little more than a week of EL data.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h3><hr>
+<p>The dataset comes from a <a href="3">tracking schema</a> that the Wikimedia Foundation uses for assessing user satisfaction. Desktop users are randomly sampled to be anonymously tracked by this schema which uses a "I'm alive" pinging system that we can use to estimate how long our users stay on the pages they visit. The dataset contains just a little more than a week of EL data.</p>
 <table>
 <thead><tr>
 <th style="text-align:left">Column</th>
@@ -11832,31 +11850,15 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>The following are possible values for an event's action field:</p>
 <ul>
 <li><strong>searchResultPage</strong>: when a new search is performed and the user is shown a SERP.</li>
 <li><strong>visitPage</strong>: when the user clicks a link in the results.</li>
 <li><strong>checkin</strong>: when the user has remained on the page for a pre-specified amount of time.</li>
 </ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Objectives">Objectives<a class="anchor-link" href="#Objectives">&#182;</a></h2><p>The objectives of this project are to find answers to the following questions:</p>
+<hr>
+<h3 id="Objectives">Objectives<a class="anchor-link" href="#Objectives">&#182;</a></h3><hr>
+<p>The objectives of this project are to find answers to the following questions:</p>
 <ol>
 <li><p>What is their daily overall clickthrough rate? How does it vary between the groups?</p>
 </li>
@@ -11940,7 +11942,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Analysis">Data Analysis<a class="anchor-link" href="#Data-Analysis">&#182;</a></h2><p>The data was provided in csv format in a file called, "events_log.csv." When reading in the data I wanted to set the index of the dataframe to be a TimeStamp.  This can be achieved using the pandas command:</p>
+<hr>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><hr>
+<p>The data was provided in csv format in a file called, "events_log.csv." When reading in the data I wanted to set the index of the dataframe to be a TimeStamp.  This can be achieved using the pandas command:</p>
 
 <pre><code>df = pd.read_csv("events_log.csv",
                  parse_dates=['timestamp'], 
@@ -12477,7 +12481,9 @@ AABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Question-2.">Question 2.<a class="anchor-link" href="#Question-2.">&#182;</a></h3><p>In order to figure out which links clients click first we have get the number of search result pages that were clicked on and group by day, <code>session_id</code> and <code>result_positon</code>.  We do this using the <a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">groupby</a> Pandas call as well as filtering the rows by which rows includes a webpage that has been visited.  We can tell which page has been visited by getting the <code>result_position</code> of the page that was visisted. The groupby and filter call are below,</p>
+<hr>
+<h3 id="Question-2.">Question 2.<a class="anchor-link" href="#Question-2.">&#182;</a></h3><hr>
+<p>In order to figure out which links clients click first we have get the number of search result pages that were clicked on and group by day, <code>session_id</code> and <code>result_positon</code>.  We do this using the <a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html">groupby</a> Pandas call as well as filtering the rows by which rows includes a webpage that has been visited.  We can tell which page has been visited by getting the <code>result_position</code> of the page that was visisted. The groupby and filter call are below,</p>
 
 </div>
 </div>
@@ -13478,7 +13484,9 @@ zMzMzBrkjpOZmZlZg9xxMjMzM2uQO05mZmZmDXLHyczMzKxB7jiZmZmZNcgdJzMzM7MGueNkZmZm
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Question-3.">Question 3.<a class="anchor-link" href="#Question-3.">&#182;</a></h3><p>Now we are interested in the daily zero rates, that is the the number of searches that return zero results. We group the data by day as we did in Question 1. and then count the number of rows that have,</p>
+<hr>
+<h3 id="Question-3.">Question 3.<a class="anchor-link" href="#Question-3.">&#182;</a></h3><hr>
+<p>Now we are interested in the daily zero rates, that is the the number of searches that return zero results. We group the data by day as we did in Question 1. and then count the number of rows that have,</p>
 
 <pre><code>'n_results' == 0
 
@@ -13724,7 +13732,9 @@ mVlBHMpmZgVxKJuZFcShbGZWEIeymVlB/j+/KJ9hcRupaAAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Question-4.">Question 4.<a class="anchor-link" href="#Question-4.">&#182;</a></h3><p>Now we want to look into the session length and what factors may affect it.</p>
+<hr>
+<h3 id="Question-4.">Question 4.<a class="anchor-link" href="#Question-4.">&#182;</a></h3><hr>
+<p>Now we want to look into the session length and what factors may affect it.</p>
 <p>We first get the start time of each session by grouping by <code>session_id</code> and taking the first row.  We have to use the command, <code>nth(0)</code> instead of <code>first()</code>, because of issues with <code>first()</code> dropping cases that have <code>NaN</code> as values.  We drop the <code>uuid</code> column since it seems like useless information and pushes the dataframe off the screen when I print it.  The last thing I will mention is that we use <code>as_index = False</code> in the <code>groupby(...)</code> call so that we get keep the original index and a Pandas DataFrame is returned instead of Pandas Series:</p>
 
 </div>
@@ -17268,7 +17278,9 @@ hP8B7Vi8WudBkWsAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>In this project we looked into factors that influence clickthrough rates on eight days of data from the Wikimedia foundation.  They had two different groups that users sessions were in, these are 'group a' and 'group b'.  We found that,</p>
+<hr>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><hr>
+<p>In this project we looked into factors that influence clickthrough rates on eight days of data from the Wikimedia foundation.  They had two different groups that users sessions were in, these are 'group a' and 'group b'.  We found that,</p>
 <ul>
 <li>'group b' had a higher return of zero results and subsequently a lower clickthrough rate compared to 'group a'.</li>
 </ul>
@@ -17288,6 +17300,19 @@ hP8B7Vi8WudBkWsAAAAASUVORK5CYII=
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
