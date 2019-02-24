@@ -68,7 +68,7 @@ The objectives of this project are to find answers to the following questions:
 
 
 ## Requirements 
-1. <a href="https://www.python.org/"> Python</a> (2.7)
+1. <a href="https://www.python.org/"> Python</a> (3.x
 2. <a href="http://jupyter.org/">Jupyter Notebook</a>
 3. <a href="http://www.numpy.org/">NumPy</a>
 4. <a href="http://matplotlib.org/">matplotlib</a>
@@ -78,3 +78,13 @@ The objectives of this project are to find answers to the following questions:
 To install the requirements with pip (except for Python), type in the main directory:
 
 <code> pip install -r requirements.txt </code>
+
+
+Or you can install the dependencies and access the notebook using <a href="https://www.docker.com/">Docker</a> by building the Docker image with the following:
+
+
+	docker built -t wikimedia .
+
+Followed by running the command container:
+
+	docker run -p 8888:8888 -t wikimedia
